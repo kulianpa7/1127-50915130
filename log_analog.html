@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="log_analog.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>個人狀態</title>
+</head>
+
+<body>
+  <header>
+    <h1>個人狀態</h1>
+  </header>
+  <div class="container">
+    <div class="sidebar">
+      <div class="sidebar__header">
+        <img class="sidebar__avatar" src="https://unsplash.it/30/?image=209" alt="" />
+        <p>name</p>
+      </div>
+      <div class="sidebar__menu-item">
+        <i class="fa fa-university"></i>
+        銀行
+        <div class="sidebar__label">800</div>
+      </div>
+      <div class="sidebar__menu-item">
+        <i class="fa fa-bar-chart"></i>
+        統計資料
+      </div>
+      <div data-page="info" class="sidebar__menu-item sidebar__menu-item--active">
+        <i class="fa fa-cog"></i>
+        個人狀態
+      </div>
+      <div data-page="texteditor" class="sidebar__menu-item">
+        <i class="fa fa-suitcase"></i>
+        文字編輯器
+      </div>
+      <div class="sidebar__menu-item">
+        <i class="fas fa-first-aid"></i>
+        幫助
+        <div class="sidebar__badge">3</div>
+      </div>
+      <div class="sidebar__menu-item">
+        <i class="fa fa-user-plus"></i>
+        推薦人
+      </div>
+    </div>
+    <div class="main">
+      <div class="main__header">
+        <h2>個人狀態</h2>
+      </div>
+      <div class="main__content">
+
+      </div>
+    </div>
+  </div>
+  <footer>
+    2024 &copy; App. All rights reserved.
+  </footer>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="analog_.js"></script>
+  <script>
+    $(".main__save-button").on('click', (event) => {
+      event.preventDefault();
+      // 清除所有 Cookie
+      document.cookie.split(";").forEach((cookie) => {
+        const cookieName = cookie.split("=")[0].trim();
+        document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/`;
+      });
+      window.location.href = "./index.html";
+    })
+  </script>
+</body>
+
+</html>

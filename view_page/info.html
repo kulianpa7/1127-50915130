@@ -1,0 +1,40 @@
+<div class="main__avatar">
+  <div class="main__avatar--overlay">
+    name
+  </div>
+</div>
+<div class="main__settings-form">
+  <form action="#" method="post">
+    <label class="main__input-label">名稱:</label>
+    <input class="main__input name" type="text" />
+    <label class="main__input-label">電子信箱:</label>
+    <input class="main__input email" type="text" />
+    <label class="main__input-label">驗證用電子信箱:</label>
+    <input class="main__input email" type="text" />
+    <label class="main__input-label">登入時間:</label>
+    <input class="main__input login_time" type="text" />
+    <button class="btn main__save-button">登出</button>
+  </form>
+</div>
+
+<script type="module">
+  console.log("ININININININININ")
+  let userData = getFromCookie();
+  if (!userData || !userData.uid) window.location.href = '/404.html';
+  $(".main__input.name").val(userData.displayName);
+  $(".main__avatar--overlay").text(userData.displayName)
+  // 假設 userData.lastLoginTime 是 UTC 時間
+  const lastLoginTimeUTC = userData.lastLoginTime;
+  // 創建一個 Date 對象
+  const lastLoginDate = new Date(lastLoginTimeUTC);
+  // 轉換為本地時區的時間格式（可以根據需求格式化）
+  const localLastLoginTime = lastLoginDate.toLocaleString(); // 使用本地化的時間格式
+  // 輸出到指定的 input 元素
+  $(".main__input.login_time").val(localLastLoginTime);
+  $(".main__avatar").css("background-image", `url(${userData.photoURL})`);
+  $(".sidebar__header p").text(userData.displayName)
+  $(".sidebar__avatar").attr("src", `${userData.photoURL}`);
+  $(".sidebar__header p").text(userData.displayName)
+  $(".main__input.email").val(userData.email);
+  console.log(userData);
+</script>
